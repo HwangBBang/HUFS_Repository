@@ -67,14 +67,16 @@ class LinkedList:
         else:
             self.delete_node(p=p,removed=removed)
             
-    def reverse(self):   #질문
-        p,c = None,self.head                     #p:previous, c=current n=next
-        while c:
-            n = c.link
-            c.link = p 
-            p=c
-            c=n
-        return p
+    def reverse(self):
+        prev = None
+        curr = self.head
+        while curr is not None:
+            link = curr.link
+            curr.link = prev
+            prev = curr	
+            curr = link	
+        self.head = prev
+       
             
             
         
