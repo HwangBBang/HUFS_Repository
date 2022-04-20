@@ -42,12 +42,12 @@ class LinkedList:
             p = p.link
         self.insert_node(p=p, new_node =new_node)
     
-    def search(self, item): # item 찾아서 노드 리턴
+    def search(self, item):                 # item 찾아서 노드 리턴
         node = self.head
-        while node is not None:
-            if node.item==item:
-                return node
-        node = node.link
+        while node is not None:             
+            if node.item==item:             # 찾았다면
+                return node                 # 해당노드 반환
+        node = node.link                    # 노드를 노드가 가리키는 노드로 초기화
         return node
         
     def search_prev(self, item):
@@ -58,7 +58,7 @@ class LinkedList:
                 return node, p
             p = node
             node = node.link
-            return None, p
+        return None, p                      # while 내에서 반환하던 오류 수정
     def delete(self, item):
         removed, p = self.search_prev(item)
         if removed is None:                 #삭제할 아이템이 없다면
@@ -81,7 +81,7 @@ class LinkedList:
             
         
 
-L = LinkedList()
+L = LinkedList()                            #객체 
 while True:
     cmd = input()
     if cmd == "exit":
