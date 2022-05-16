@@ -65,7 +65,7 @@ class BinarySearchTree:
 	# p: parent of <node>
 	# rep_p: parent of <rep_node>
 	def replace(self, node, rep_node, p, rep_p): 
-		# A. REPLACE p-to-node link
+# A. REPLACE p-to-node link
 		# case-1: node is root (p is None)
 		if p is None: 
 			self.root = rep_node
@@ -75,21 +75,22 @@ class BinarySearchTree:
 		# case-3: node is p.right
 		else :
 			p.right = rep_node
+			# 이해됨
 		
-		# B. REPLACE node-to-child(s) link(s) IF <rep_node> exists
+# B. REPLACE node-to-child(s) link(s) IF <rep_node> exists
 		# case-1: <rep_node> is <node>'s left child  --> Do nothing
-		
-		if rep_node == p.left:
+		if rep_node == node.left:
 			pass
 		# case-2: <rep_node> is <node>'s right child --> replace the left link IF node.left exists
-		
-		elif rep_node == p.right:
-			p.left = rep_node
+		elif rep_node == node.right:
+			if node.left is not None:
+				rep_node.left = node.right
+			
 		# case-3: <rep_node> is not <node>'s child --> replace both left and right links
-		else :
-			p.left = rep_node; p.right = rep_node
+		else:
+			node.left = rep_node; node.right = rep_node
 		
-		# C. DELETE <rep_p> to <rep_node> link (already coded below)
+# C. DELETE <rep_p> to <rep_node> link (already coded below)
 		rep_p.left = None
 			
 	def find_min_p(self, root, p):
