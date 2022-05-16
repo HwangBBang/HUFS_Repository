@@ -78,15 +78,16 @@ class BinarySearchTree:
 		
 		# B. REPLACE node-to-child(s) link(s) IF <rep_node> exists
 		# case-1: <rep_node> is <node>'s left child  --> Do nothing
+		
 		if rep_node == p.left:
 			pass
 		# case-2: <rep_node> is <node>'s right child --> replace the left link IF node.left exists
-	elif rep_node == p.right:
-		p.left =  rep_node
-    if p.left is None:
-      pass
-		# case-3: <rep_node> is not <node>'s child --> replace both left and right links
 		
+		elif rep_node == p.right:
+			p.left = rep_node
+		# case-3: <rep_node> is not <node>'s child --> replace both left and right links
+		else :
+			p.left = rep_node; p.right = rep_node
 		
 		# C. DELETE <rep_p> to <rep_node> link (already coded below)
 		rep_p.left = None
@@ -137,24 +138,4 @@ class BinarySearchTree:
 			print(root.key(), end=" ")
 			self.inorder(root.right)
 	
-T = BinarySearchTree()
-while True:
-	cmd = input()
-	if cmd == 'exit':
-		break
-	elif cmd == 'print':
-		print('preorder:', end=" "); T.preorder(T.root); print();
-		print('inorder :', end=" "); T.inorder(T.root); print();
-	else:
-		cmd = cmd.split()
-		cmd, key = cmd[0], int(cmd[1])
-		if cmd == 'find':
-			node = T.search(key)
-			if node is None:
-				print('KEY:{} NOT FOUND'.format(key))
-			else:
-				print('KEY:{} FOUND'.format(key))
-		elif cmd == 'in':
-			node = T.insert(key)
-		elif cmd == 'del':
-			node = T.delete(key)
+	
